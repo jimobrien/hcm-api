@@ -7,8 +7,8 @@ class python {
 }
 
 class python::packages {
-    $apt = ['python-dev', 'build-essential', 'python-pip', ]
-    $pip = ['flask', ]
+    $apt = ['python-dev', 'build-essential', 'python-pip', 'python-virtualenv']
+    $pip = ['flask']
 
     package { $apt:
         require => Class['python'],
