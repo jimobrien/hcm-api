@@ -7,6 +7,7 @@ class uwsgi {
         "logdate" => "",
         "optimize" => 2,
         "processes" => 2,
+        "py-autoreload" => 1,
         "master" => "",
         "die-on-term" => "",
         "logto" => "/var/log/uwsgi.log",
