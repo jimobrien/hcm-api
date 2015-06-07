@@ -5,7 +5,7 @@ domain = "hcm.ly"
 settings = {
   :hostname => "hcmapi",
   :box => "hashicorp/precise64",
-  :ip => "192.168.1.17"
+  :ip => "192.168.50.17"
 }
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
