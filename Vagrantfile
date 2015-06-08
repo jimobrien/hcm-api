@@ -18,9 +18,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Shared folders
   config.vm.synced_folder "src/", "/var/www/#{settings[:hostname]}.#{domain}/src"
 
+  config.vm.provision :shell, :path => "provision.sh"
+
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "puppet/manifests"
-    puppet.module_path = "puppet/modules"
+    puppet.module_path = ["puppet/modules-contrib", "puppet/modules"]
     puppet.options = '--verbose --trace'
   end
 

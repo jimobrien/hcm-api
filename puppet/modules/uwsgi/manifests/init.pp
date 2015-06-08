@@ -16,13 +16,15 @@ class uwsgi {
         "callable" => "app",
     }
 
+    $venv = "/var/www/${hostname}.${domain}/src/env"
+
     package { "upstart":
         ensure => installed,
     }
     package { "uwsgi":
         ensure => installed,
         provider => pip,
-        require => [Class["python::packages"], Package["upstart"]],
+        require => [Class["python"], Package["upstart"]],
     }
     file { "/etc/init/uwsgi.conf":
         ensure => present,
