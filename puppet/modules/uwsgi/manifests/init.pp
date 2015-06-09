@@ -14,6 +14,9 @@ class uwsgi {
         "chdir" => "/var/www/${hostname}.${domain}/src",
         "module" => "app",
         "callable" => "app",
+
+        # force a complete loading of the application in each process
+        "lazy-apps" => ""
     }
 
     $venv = "/var/www/${hostname}.${domain}/src/env"
