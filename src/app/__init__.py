@@ -33,9 +33,18 @@ def install_secret_key(app, filename='secret_key'):
 if not app.config['DEBUG']:
     install_secret_key(app)
 
+from app.users.views import mod as usersModule
+app.register_blueprint(usersModule)
+
+# Initialize database
+from app.database import db_session, init_db
+init_db()
+
+# Ensure db session is removed on app exit
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
-
-from app.users.views import mod as usersModule
-app.register_blueprint(usersModule)
