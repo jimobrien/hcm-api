@@ -16,7 +16,8 @@ class Person(Base):
     postalcode = Column(Integer)
     state = Column(String)
 
-    def __init__(self, name=None, email=None, password=None):
+    def __init__(self, name=None, email=None, birthdate=None, address=None,
+        city=None, postalcode=None, state=None, created_by_user=None):
         self.name = name
         self.email = email
         self.birthdate = birthdate
