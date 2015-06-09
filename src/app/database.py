@@ -12,4 +12,5 @@ Base.query = db_session.query_property()
 
 def init_db():
     import app.users.models
+    import app.people.models
     Base.metadata.create_all(bind=engine)

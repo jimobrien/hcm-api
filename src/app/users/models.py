@@ -1,11 +1,13 @@
 from app.users import constants as USER
 from sqlalchemy import Column, Integer, SmallInteger, String
+from sqlalchemy.orm import relationship
 from app.database import Base
 
 class User(Base):
     __tablename__ = 'users_user'
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), unique=True)
+    people = relationship("Person", backref="user")
+    name = Column(String(50))
     email = Column(String(120), unique=True)
     password = Column(String(120))
     role = Column(SmallInteger, default=USER.USER)
